@@ -1,0 +1,118 @@
+$breakpoints: (
+    xxs: 320px,
+    xs: 576px,
+    sm: 768px,
+    md: 992px,
+    lg: 1200px,
+    xl: 1536px
+);
+
+@mixin xxl {
+	@media (min-width: 1600px) {
+		@content;
+	}
+}
+
+@mixin pc {
+	@media (min-width: 1025px) {
+		@content
+	}
+}
+
+@mixin laptop {
+	@media (max-width: 1024px) {
+		@content;
+	}
+}
+
+@mixin tablet {
+	@media (max-width: 768px) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media(max-width: 575px){
+		@content;
+	}
+}
+
+@mixin media-breakpoint-above($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		@media only screen and (min-width: ($breakpoint-value + 1)) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: ($breakpoint + 1)) {
+			@content;
+		}
+	}
+}
+
+/**
+    * Usage
+    * @include media-breakpoint-below(sm) or @media-breakpoint-below(768px)
+*/
+
+@mixin media-breakpoint-below($breakpoint) {
+	@if map-has-key($breakpoints, $breakpoint) {
+		$breakpoint-value: map-get($breakpoints, $breakpoint);
+		@media only screen and (max-width: $breakpoint-value) {
+			@content;
+		}
+	} @else {
+		@media only screen and (max-width: $breakpoint) {
+			@content;
+		}
+	}
+}
+
+/**
+    * Usage
+    * @include media-breakpoint-between(sm, lg) or @media-breakpoint-between(768px, 1200px)
+*/
+
+@mixin media-breakpoint-between($lower, $upper) {
+	@if map-has-key($breakpoints, $lower) and map-has-key($breakpoints, $upper)
+	{
+		$lower-breakpoint: map-get($breakpoints, $lower);
+		$upper-breakpoint: map-get($breakpoints, $upper);
+
+		@media only screen and (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+			@content;
+		}
+	} @else {
+		@media only screen and (min-width: $lower) and (max-width: ($upper - 1)) {
+			@content;
+		}
+	}
+}
+
+@mixin up-to-size($key, $breakpoint: $breakpoints) {
+	@media (max-width: map-get($breakpoint, $key)) {
+		@content;
+	}
+}
+
+
+
+@mixin custom-scroll() {
+	&::-webkit-scrollbar-track
+	{
+		border-radius: 10px;
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar
+	{
+		width: 5px;
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb
+	{
+		border-radius: 10px;
+		background-color: var(--gray4);
+	}
+}

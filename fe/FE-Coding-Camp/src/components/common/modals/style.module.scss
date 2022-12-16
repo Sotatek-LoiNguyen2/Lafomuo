@@ -1,0 +1,24 @@
+.listingCancelModal {
+  text-align: center;
+  .title {
+    font-size: 25px;
+    color: var(--title-color);
+    font-weight: 600;
+  }
+  .title1 {
+    font-size: 25px;
+    font-weight: 600;
+    padding: 0 55px;
+    margin-bottom: 20px;
+  }
+  .subTitle {
+    font-size: 16px;
+    color: var(--gray-light);
+  }
+  .logo {
+    margin-bottom: 30px;
+  }
+  button {
+    font-weight: 600;
+  }
+}

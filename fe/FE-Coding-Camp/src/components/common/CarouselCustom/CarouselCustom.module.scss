@@ -1,0 +1,154 @@
+@import "../../../styles/mixin.scss";
+.carouselContainer {
+  :global {
+    @include tablet {
+      padding-top: 30px;
+    }
+    @include mobile {
+      padding: 30px 13px;
+    }
+
+    max-width: 750px;
+
+    .slide {
+      .slideItem {
+        padding: 0 10px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03) !important;
+        padding: 28px 25px;
+        background: #ffffff;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03);
+        border-radius: 10px;
+        .info-general {
+          display: flex;
+          align-items: center;
+          margin-bottom: 13px;
+          img {
+            margin-right: 20px;
+          }
+          .value {
+            color: #7f7f7f;
+            font-size: 12px;
+            margin-bottom: 0;
+          }
+          .name {
+            color: #27292f;
+            font-weight: 600;
+            margin-bottom: 4px;
+          }
+        }
+        .moneyToPaid {
+          color: #27292f;
+          font-weight: 600;
+          font-size: 12px;
+          margin-bottom: -2px;
+        }
+        .button__repayment {
+          color: var(--main-color) !important;
+          span {
+            font-weight: 700px !important;
+          }
+          border-color: 1px solid var(--main-color) !important;
+          width: 100%;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+        .ant-progress-text {
+          font-size: 12px;
+          font-weight: 600;
+          color: #090a0a;
+        }
+        .ant-progress-bg {
+          background-color: #a5a6f6;
+        }
+        @include mobile {
+          width: 100%;
+        }
+      }
+      .slick-slide {
+        @include tablet {
+          width: 33.33%;
+        }
+      }
+      :global {
+        .ant-carousel .slick-list .slick-slide {
+          // pointer-events: initial;
+          padding: 0 20px;
+        }
+        .slick-arrow {
+          background: #ffffff !important;
+          box-shadow: -12px 6px 100px 34px rgba(0, 0, 0, 0.1);
+          // box-shadow: 0px 8px 32px rgb(0 0 0 / 12%);
+          width: 40px !important;
+          height: 40px !important;
+          border-radius: 50%;
+          z-index: 9;
+          display: flex !important;
+          justify-content: center;
+          align-items: center;
+          &.slick-prev {
+            left: -10px;
+          }
+          &.slick-next {
+            right: -10px;
+          }
+          @include mobile {
+            &.slick-prev {
+              left: 0;
+            }
+            &.slick-next {
+              right: 0;
+            }
+          }
+        }
+        .slick-disabled {
+          display: none !important;
+        }
+      }
+      .ant-image-img {
+        border-radius: 10px;
+      }
+    }
+    .slideMobi {
+      .slideItem {
+        padding: 0 10px;
+      }
+      .slick-slide {
+        @include tablet {
+          width: 33.33%;
+        }
+      }
+      :global {
+        .slick-arrow {
+          background-color: #ffffff !important;
+          box-shadow: 0px 8px 32px rgb(0 0 0 / 12%);
+          width: 50px !important;
+          height: 50px !important;
+          border-radius: 50%;
+          z-index: 9;
+          display: flex !important;
+          justify-content: center;
+          align-items: center;
+        }
+        .slick-dots {
+          bottom: -40px;
+          li {
+            button {
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              background: rgb(149 149 149);
+            }
+          }
+          .slick-active {
+            width: 35px;
+            border-radius: 20px;
+            background: #ffa99e;
+            button {
+              background: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}

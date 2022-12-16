@@ -1,0 +1,43 @@
+@import "../../styles/mixin.scss";
+.buyOutInfoContainer {
+  :global {
+    padding: 20px 50px 20px 50px;
+    background-color: "white";
+    .key {
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 0;
+    }
+    .value {
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+}
+
+.bidAuctionContainer {
+  :global {
+    padding: 25px 0px 25px;
+
+    .key {
+      font-weight: bold;
+      color: var(--text-color);
+      margin-bottom: 10;
+    }
+    .value {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
+
+.activityContainer {
+  :global {
+    height: 225px;
+    overflow: auto;
+    .row {
+      padding: 15px 0px;
+      border-bottom: solid 1px rgb(240, 240, 240);
+    }
+  }
+}

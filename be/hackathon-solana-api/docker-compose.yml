@@ -1,0 +1,54 @@
+version: '3.8'
+
+services:
+
+  # app:
+  #   container_name: solana-coding-camp-be
+  #   build:
+  #     context: .
+  #     args:
+  #       - APP_ENV
+  #   command: yarn start:dev
+  #   ports:
+  #     - 3030:3000
+  #   volumes:
+  #     - ./:/usr/src/app
+  #   depends_on:
+  #     - solana-db
+  #   environment:
+  #     APP_ENV: ${APP_ENV}
+  #     APP_PORT: ${APP_PORT}
+  #     DB_HOST: solana-db
+  #     DB_PORT: 27017
+  #     DB_NAME: ${DB_NAME}
+  #     DB_USER: ${DB_USER}
+  #     DB_PASS: ${DB_PASS}
+  #     JWT_ACCESS_TOKEN_EXP_IN_SEC: ${JWT_ACCESS_TOKEN_EXP_IN_SEC}
+  #     JWT_REFRESH_TOKEN_EXP_IN_SEC: ${JWT_REFRESH_TOKEN_EXP_IN_SEC}
+  #     JWT_PUBLIC_KEY_BASE64: ${JWT_PUBLIC_KEY_BASE64}
+  #     JWT_PRIVATE_KEY_BASE64: ${JWT_PRIVATE_KEY_BASE64}
+  #   networks:
+  #     - base_net
+
+  solana-db:
+    container_name: solana-coding-camp-db
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASS}
+      MONGO_INITDB_DATABASE: ${DB_NAME}
+    ports:
+      - 27018:27017
+    volumes:
+      - ./data/db:/data/db
+#     networks:
+#       - base_net
+
+# networks:
+#   base_net:
+#     external: true
+#     name: solana-coding-camp
+
+# volumes:
+#   mongo-db:
+#   node_modules:

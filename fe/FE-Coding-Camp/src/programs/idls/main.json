@@ -1,0 +1,1241 @@
+{
+  "version": "0.1.0",
+  "name": "solana_real_estate_tokenization",
+  "instructions": [
+    {
+      "name": "setupPlatform",
+      "accounts": [
+        {
+          "name": "governor",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "setting",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "bigGuardian",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "treasury",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "symbol",
+          "type": "string"
+        },
+        {
+          "name": "escrowLockDuration",
+          "type": "i64"
+        },
+        {
+          "name": "preLockBeforeDistribution",
+          "type": "i64"
+        },
+        {
+          "name": "mintingProtocolPrice",
+          "type": "u64"
+        },
+        {
+          "name": "minReserveFactor",
+          "type": "u16"
+        },
+        {
+          "name": "maxReserveFactor",
+          "type": "u16"
+        }
+      ]
+    },
+    {
+      "name": "issueAsset",
+      "accounts": [
+        {
+          "name": "metadata",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "masterEdition",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasury",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "updateAuthority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "bigGuardian",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "assetBasket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "governor",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMetadataProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "uri",
+          "type": "string"
+        },
+        {
+          "name": "title",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "fractionalizeAsset",
+      "accounts": [
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "bigGuardian",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "assetBasket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasuryNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mintNft",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ownerNftTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "governor",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "totalSupply",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "createDividendCheckpoint",
+      "accounts": [
+        {
+          "name": "dividendDistributor",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "fractionalizeTokenLocker",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "[Locker]."
+          ]
+        },
+        {
+          "name": "assetBasket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "owner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "bigGuardian",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "setting",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "governor",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "mint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ownerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasuryTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "totalDistributionAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "claimDividendByCheckpoint",
+      "accounts": [
+        {
+          "name": "dividendDistributor",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "governor",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "locker",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The [Locker] being exited from."
+          ]
+        },
+        {
+          "name": "escrow",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The [Escrow] that is being closed. Sent the funds back to claimer"
+          ]
+        },
+        {
+          "name": "claimer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "claimerTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasuryTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "treasuryTokenAccountAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "claimedDividend",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "newEscrow",
+      "accounts": [
+        {
+          "name": "locker",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "[Locker]."
+          ]
+        },
+        {
+          "name": "governor",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "escrow",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "[Escrow]."
+          ]
+        },
+        {
+          "name": "escrowOwner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true,
+          "docs": [
+            "Payer of the initialization."
+          ]
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "System program."
+          ]
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "lock",
+      "accounts": [
+        {
+          "name": "locker",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "[Locker]."
+          ]
+        },
+        {
+          "name": "escrow",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "[Escrow]."
+          ]
+        },
+        {
+          "name": "escrowTokenHodl",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Token account held by the [Escrow]."
+          ]
+        },
+        {
+          "name": "escrowOwner",
+          "isMut": false,
+          "isSigner": true,
+          "docs": [
+            "Authority of the [Escrow] and [Self::source_tokens]."
+          ]
+        },
+        {
+          "name": "sourceTokens",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The source of deposited tokens."
+          ]
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Token program."
+          ]
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "exit",
+      "accounts": [
+        {
+          "name": "locker",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The [Locker] being exited from."
+          ]
+        },
+        {
+          "name": "escrow",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "The [Escrow] that is being closed."
+          ]
+        },
+        {
+          "name": "escrowOwner",
+          "isMut": false,
+          "isSigner": true,
+          "docs": [
+            "Authority of the [Escrow]."
+          ]
+        },
+        {
+          "name": "escrowHodl",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Tokens locked up in the [Escrow]."
+          ]
+        },
+        {
+          "name": "destinationTokens",
+          "isMut": true,
+          "isSigner": false,
+          "docs": [
+            "Destination for the tokens to unlock."
+          ]
+        },
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true,
+          "docs": [
+            "The payer to receive the rent refund."
+          ]
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false,
+          "docs": [
+            "Token program."
+          ]
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "AssetBasket",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "assetTokenize",
+            "type": {
+              "defined": "AssetTokenization"
+            }
+          },
+          {
+            "name": "basketId",
+            "type": "u64"
+          },
+          {
+            "name": "assetId",
+            "type": "publicKey"
+          },
+          {
+            "name": "assetMetadata",
+            "type": "publicKey"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "governor",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalDistributionCheckpoint",
+            "type": "u64"
+          },
+          {
+            "name": "iat",
+            "type": "i64"
+          },
+          {
+            "name": "isFreezed",
+            "type": "bool"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DividendClaimedDetails",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "checkpointId",
+            "type": "u64"
+          },
+          {
+            "name": "claimer",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalClaimed",
+            "type": "u64"
+          },
+          {
+            "name": "lastClaimEpoch",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "DividendDistributor",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "id",
+            "type": "u64"
+          },
+          {
+            "name": "governor",
+            "type": "publicKey"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalDistributeAmount",
+            "type": "u64"
+          },
+          {
+            "name": "totalClaimed",
+            "type": "u64"
+          },
+          {
+            "name": "freezed",
+            "type": "bool"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FractionalTokenEscrow",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "locker",
+            "docs": [
+              "The [Locker] that this [Escrow] is part of."
+            ],
+            "type": "publicKey"
+          },
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "hodl",
+            "docs": [
+              "The token account holding the escrow tokens."
+            ],
+            "type": "publicKey"
+          },
+          {
+            "name": "lockedAmount",
+            "type": "u64"
+          },
+          {
+            "name": "suggestedPrice",
+            "type": "u64"
+          },
+          {
+            "name": "bump",
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "FractionalizedTokenLocker",
+      "docs": [
+        "A group of [Escrow]s."
+      ],
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "basketId",
+            "type": "u64"
+          },
+          {
+            "name": "dividendDistributor",
+            "docs": [
+              "Base account used to generate signer seeds."
+            ],
+            "type": "publicKey"
+          },
+          {
+            "name": "governor",
+            "docs": [
+              "Governor associated with the [Locker]."
+            ],
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenMint",
+            "docs": [
+              "Mint of the token that must be locked in the [Locker]."
+            ],
+            "type": "publicKey"
+          },
+          {
+            "name": "lockedSupply",
+            "docs": [
+              "Total number of tokens locked in [Escrow]s."
+            ],
+            "type": "u64"
+          },
+          {
+            "name": "lockEndTime",
+            "type": "i64"
+          },
+          {
+            "name": "bump",
+            "docs": [
+              "Bump seed."
+            ],
+            "type": "u8"
+          }
+        ]
+      }
+    },
+    {
+      "name": "PlatformGovernor",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "symbol",
+            "docs": [
+              "The symbol for the asset"
+            ],
+            "type": "string"
+          },
+          {
+            "name": "isMutable",
+            "type": "bool"
+          },
+          {
+            "name": "totalDividendCheckpoint",
+            "type": "u64"
+          },
+          {
+            "name": "totalAssetsMinted",
+            "type": "u64"
+          },
+          {
+            "name": "totalAssetsBurned",
+            "type": "u64"
+          },
+          {
+            "name": "mintingProtocolPrice",
+            "type": "u64"
+          },
+          {
+            "name": "mintingProtocolToken",
+            "type": {
+              "option": "publicKey"
+            }
+          },
+          {
+            "name": "bigGuardian",
+            "type": "publicKey"
+          },
+          {
+            "name": "treasury",
+            "type": "publicKey"
+          },
+          {
+            "name": "setting",
+            "type": "publicKey"
+          }
+        ]
+      }
+    },
+    {
+      "name": "LafomuoSetting",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "governor",
+            "type": "publicKey"
+          },
+          {
+            "name": "escrowLockDuration",
+            "type": "i64"
+          },
+          {
+            "name": "preLockBeforeDistribution",
+            "type": "i64"
+          },
+          {
+            "name": "minReserveFactor",
+            "type": "u16"
+          },
+          {
+            "name": "maxReserveFactor",
+            "type": "u16"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "AssetTokenization",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "tokenMint",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenized",
+            "type": "bool"
+          },
+          {
+            "name": "totalSupply",
+            "type": "u64"
+          },
+          {
+            "name": "tokenizedAt",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "AuctionState",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "REDEEM"
+          },
+          {
+            "name": "INACTIVE"
+          },
+          {
+            "name": "LIVE"
+          },
+          {
+            "name": "END"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "AssetIssuance",
+      "fields": [
+        {
+          "name": "owner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "assetId",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "assetTokenAccount",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "assetBasket",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "masterEdition",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "metadata",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "iat",
+          "type": "i64",
+          "index": false
+        },
+        {
+          "name": "basketId",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "AssetFractionalize",
+      "fields": [
+        {
+          "name": "assetBasket",
+          "type": "publicKey",
+          "index": true
+        },
+        {
+          "name": "governor",
+          "type": "publicKey",
+          "index": true
+        },
+        {
+          "name": "mint",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "owner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "totalSupply",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "DistributionCreated",
+      "fields": [
+        {
+          "name": "checkpointId",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "distributor",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "locker",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "owner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "totalDistributionAmount",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "startDistributionAt",
+          "type": "i64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "DividendClaimed",
+      "fields": [
+        {
+          "name": "checkpointId",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "distributor",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "owner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "totalClaimed",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "lastClaimedAt",
+          "type": "i64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "NewEscrowEvent",
+      "fields": [
+        {
+          "name": "escrow",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "escrowOwner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "locker",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "timestamp",
+          "type": "i64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "LockEvent",
+      "fields": [
+        {
+          "name": "locker",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "escrowOwner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "tokenMint",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "amount",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "lockerSupply",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    },
+    {
+      "name": "ExitEscrowEvent",
+      "fields": [
+        {
+          "name": "escrowOwner",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "locker",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "timestamp",
+          "type": "i64",
+          "index": false
+        },
+        {
+          "name": "lockerSupply",
+          "type": "u64",
+          "index": false
+        },
+        {
+          "name": "releasedAmount",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "AccountNotInitialized",
+      "msg": "Account has not initialized yet!"
+    },
+    {
+      "code": 6001,
+      "name": "NotAbleToUnpackAccount",
+      "msg": "Not able to unpack account!"
+    },
+    {
+      "code": 6002,
+      "name": "IncorrectOwner",
+      "msg": "Invalid account owner!"
+    },
+    {
+      "code": 6003,
+      "name": "NotOwnedBySPLProgram"
+    },
+    {
+      "code": 6004,
+      "name": "TokenAccountMintMismatched"
+    },
+    {
+      "code": 6005,
+      "name": "TokenAccountOwnerMismatched"
+    },
+    {
+      "code": 6006,
+      "name": "TokenTransferFailed"
+    },
+    {
+      "code": 6007,
+      "name": "PublicKeyMismatch"
+    },
+    {
+      "code": 6008,
+      "name": "PublicKeyDidMatch"
+    },
+    {
+      "code": 6009,
+      "name": "NotEnoughTokens"
+    },
+    {
+      "code": 6010,
+      "name": "NotEnoughSOL"
+    },
+    {
+      "code": 6011,
+      "name": "MintingAmountCantBeZero"
+    },
+    {
+      "code": 6012,
+      "name": "DistributionEndTimePassed",
+      "msg": "Distribution end time is already passed!"
+    },
+    {
+      "code": 6013,
+      "name": "DividendCheckpointCantBeZero"
+    },
+    {
+      "code": 6014,
+      "name": "ImmutableGovernor"
+    },
+    {
+      "code": 6015,
+      "name": "GovernorMismatch"
+    },
+    {
+      "code": 6016,
+      "name": "NFTOwnerMismatch"
+    },
+    {
+      "code": 6017,
+      "name": "NoFreezeAuthoritySet"
+    },
+    {
+      "code": 6018,
+      "name": "InvalidAccountData"
+    },
+    {
+      "code": 6019,
+      "name": "FractionalTokenZeroDecimals"
+    },
+    {
+      "code": 6020,
+      "name": "FractionalTokenSupplyNotPure"
+    },
+    {
+      "code": 6021,
+      "name": "NFTIsAlreadyFractionalized"
+    },
+    {
+      "code": 6022,
+      "name": "TokenTreasuryPDANotFound"
+    },
+    {
+      "code": 6023,
+      "name": "InvalidMerkleProof",
+      "msg": "Invalid Dividend Distribution Merkle proofs!!"
+    },
+    {
+      "code": 6024,
+      "name": "DividendAlreadyClaimed",
+      "msg": "Dividend from this checkpoint is already claimed!!"
+    },
+    {
+      "code": 6025,
+      "name": "ExceedsTotalDistributionAmount"
+    },
+    {
+      "code": 6026,
+      "name": "InvalidReserveFactorForSetting"
+    },
+    {
+      "code": 6027,
+      "name": "MinReserveFactorGreaterThanMax"
+    },
+    {
+      "code": 6028,
+      "name": "ReserveFactorMoreThanBasisPoint"
+    },
+    {
+      "code": 6029,
+      "name": "SettingAccountMismatched"
+    }
+  ],
+  "metadata": {
+    "address": "7RLLimHKvGkFGZSiVipaBDYGZNKGCve9twDHfdsBDsN9"
+  }
+}

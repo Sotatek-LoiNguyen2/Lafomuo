@@ -1,0 +1,25 @@
+@import "../../styles/mixin.scss";
+.fileItem {
+  :global {
+    .file-icon {
+      color: #64b4ff;
+      font-size: 23px;
+      margin-right: 5px;
+    }
+    .download-icon {
+      visibility: hidden;
+      margin-left: 15px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+    .file-name {
+      // font-weight: bold;
+    }
+    // &:hover {
+    //   .download-icon {
+    //     visibility: visible;
+    //     color: #1890ff;
+    //   }
+    // }
+  }
+}
